@@ -1,0 +1,16 @@
+[package]
+name = "node-fuzzy-phrase"
+version = "0.1.0"
+authors = ["Andrea del Rio <adelrio@gmail.com>"]
+license = "MIT"
+build = "build.rs"
+
+[lib]
+name = "node_fuzzy_phrase"
+crate-type = ["dylib"]
+
+[build-dependencies]
+neon-build = "0.1.22"
+
+[dependencies]
+neon = "0.1.22"
