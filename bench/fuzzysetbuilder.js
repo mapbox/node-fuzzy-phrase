@@ -9,7 +9,6 @@ function setup(cb) {
     if (!cb) cb = function(){};
     console.log('# FuzzyPhraseSetBuilder');
     var start = +new Date;
-    // streetnames with "Lake" from TIGER
     var seq = 1;
     var docs = require('fs').readFileSync(__dirname + '/fixtures/test-words.txt', 'utf8')
         .split('\n');
