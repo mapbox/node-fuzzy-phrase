@@ -1,4 +1,4 @@
-const fst = require('../lib');
+const fuzzy = require('../lib');
 const assert = require('assert');
 const tape = require('tape');
 

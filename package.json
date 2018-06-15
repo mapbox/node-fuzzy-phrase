@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "neon build",
+    "test": "tape test/*.js",
     "bench": "./test/run_benchmarks.sh"
   }
 }
