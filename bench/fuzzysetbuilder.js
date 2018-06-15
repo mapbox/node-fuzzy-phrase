@@ -1,6 +1,7 @@
 const fuzzy = require('../lib');
 const assert = require('assert');
 const tape = require('tape');
+var suite = new require('benchmark').Suite();
 
 tape('build FuzzyPhraseSetBuilder', (t) => {
     let build = new fuzzy.FuzzyPhraseSetBuilder("set.fuzzy");
@@ -30,8 +31,6 @@ tape("FuzzyPhraseSetBuilder insertion and Set lookup", (t) => {
     t.throws(() => { new fuzzy.FuzzyPhraseSet(7) });
     t.end();
 })
-
-var suite = new require('benchmark').Suite();
 
 module.exports = setup;
 
