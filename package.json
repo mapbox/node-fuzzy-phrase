@@ -10,6 +10,11 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.243.1",
-    "tape": "4.6.3"
+    "tape": "4.6.3",
+    "benchmark": "^2.1.4"
+  },
+  "scripts": {
+    "build": "neon build",
+    "bench": "./test/run_benchmarks.sh"
   }
 }
