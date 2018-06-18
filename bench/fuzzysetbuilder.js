@@ -3,15 +3,36 @@ const assert = require('assert');
 const tape = require('tape');
 let suite = new require('benchmark').Suite();
 
+
 module.exports = setup;
 
 // setup
+function setup(cb) {
+    if (!cb) cb = function(){};
+    console.log('# FuzzyPhraseSetBuilder');
+    let start = +new Date;
+    let iterations = 10;
+    let docs = require('fs').readFileSync(__dirname + '/fixtures/test-words.txt', 'utf8')
+        .split('\n');
+    runBenchmark(cb);
+}
 // start
+function runBenchmark(cb) {
+    suite.add('FuzzyPhraseSetBuilder', {
+        'defer': true,
+        'fn': fuzzy.FuzzyPhraseSetBuilder.new()
+    })
+    .on('complete', function(event) {
+        console.log(String(event.target), '\n');
+        cb(null, suite);
+    })
+    .run({'async': true});
+}
 // end
 
-// var totalTime;
-// var start = new Date;
-// var iterations = 6;
+// let totalTime;
+// let start = new Date;
+// let iterations = 6;
 // while (iterations--) {
 // 	// Code snippet goes here.
 // }
@@ -19,10 +40,10 @@ module.exports = setup;
 // totalTime = new Date - start;
 //
 // OR
-// var hz;
-// var period;
-// var startTime = new Date;
-// var runs = 0;
+// let hz;
+// let period;
+// let startTime = new Date;
+// let runs = 0;
 // do {
 // 	// Code snippet goes here.
 // 	runs++;
@@ -41,27 +62,9 @@ module.exports = setup;
 // // This can be shortened to:
 // // hz = (runs * 1000) / totalTime;
 
-function setup(cb) {
-    if (!cb) cb = function(){};
-    console.log('# FuzzyPhraseSetBuilder');
-    var start = +new Date;
-    var seq = 1;
-    var docs = require('fs').readFileSync(__dirname + '/fixtures/test-words.txt', 'utf8')
-        .split('\n');
-    runBenchmark(cb);
-}
 
-function runBenchmark(cb) {
-    suite.add('FuzzyPhraseSetBuilder', {
-        'defer': true,
-        'fn': FuzzyPhraseSetBuilder
-    })
-    .on('complete', function(event) {
-        console.log(String(event.target), '\n');
-        cb(null, suite);
-    })
-    .run({'async': true});
-}
+
+
 
 
 if (!process.env.runSuite) setup();
