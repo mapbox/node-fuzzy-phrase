@@ -5,21 +5,19 @@ let suite = new require('benchmark').Suite();
 
 // setup
 console.log("# FuzzyPhraseSetBuilder build: ");
-var startTime = new Date;
+let startTime = new Date;
 let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
 let docs = require('fs').readFileSync(__dirname + '/fixtures/test-words.txt', 'utf8')
         .split('\n');
 setBuilder.insert(docs);
 setBuilder.finish();
-let totalTime = new Date - startTime;
 console.log('setup time ' + (+new Date - startTime) + 'ms');
 
 
 // time here
+console.log("# FuzzyPhraseSet lookup");
+startTime = new Date;
 let set = new fuzzy.FuzzyPhraseSet("set.fuzzy");
-
-docs.forEach((el) => {
-    set.contains([el]);
-})
 // time here
 set.contains(docs);
+console.log('lookup time ' + (+new Date - startTime) + 'ms');
