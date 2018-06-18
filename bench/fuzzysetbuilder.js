@@ -5,6 +5,10 @@ let suite = new require('benchmark').Suite();
 
 module.exports = setup;
 
+// setup
+// start
+// end
+
 // var totalTime;
 // var start = new Date;
 // var iterations = 6;
@@ -13,7 +17,7 @@ module.exports = setup;
 // }
 // // `totalTime` is the number of milliseconds it took to execute the code snippet 6 times.
 // totalTime = new Date - start;
-// 
+//
 // OR
 // var hz;
 // var period;
