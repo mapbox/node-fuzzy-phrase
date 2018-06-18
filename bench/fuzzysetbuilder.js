@@ -12,7 +12,7 @@ let docs = require('fs').readFileSync(__dirname + '/fixtures/test-words.txt', 'u
 setBuilder.insert(docs);
 setBuilder.finish();
 let totalTime = new Date - startTime;
-console.log("build time:" + totalTime);
+console.log('setup time ' + (+new Date - startTime) + 'ms');
 
 
 // time here
