@@ -15,8 +15,9 @@ install:
   - sh /tmp/rustup.sh -y
   - export PATH="$HOME/.cargo/bin:$PATH"
   - source "$HOME/.cargo/env"
-  - npm install neon-cli@^0.1.22
-  - neon build "$( if [[ $BUILDTYPE == debug ]]; then echo '--debug'; fi )"
+  - npm install
+  # - npm install neon-cli@^0.1.22
+  # - neon build "$( if [[ $BUILDTYPE == debug ]]; then echo '--debug'; fi )"
 
 # *Here we run tests*
 # We prefer running tests in the 'before_script' section rather than 'script' to ensure fast failure.
@@ -44,9 +45,9 @@ matrix:
       node_js: 6
 
     # linux publishable node v6/debug
-    - os: linux
-      env: BUILDTYPE=debug
-      node_js: 6
+    # - os: linux
+    #   env: BUILDTYPE=debug
+    #   node_js: 6
 
     # osx publishable node v6/release
     - os: osx
@@ -55,10 +56,10 @@ matrix:
       node_js: 6
 
     # osx publishable node v6/debug
-    - os: osx
-      osx_image: xcode9.2
-      env: BUILDTYPE=debug
-      node_js: 6
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: BUILDTYPE=debug
+    #   node_js: 6
 
     ## ** Builds that do not get published **
 
