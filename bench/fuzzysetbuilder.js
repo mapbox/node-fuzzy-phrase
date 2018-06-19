@@ -13,12 +13,10 @@ setBuilder.insert(docs);
 setBuilder.finish();
 console.log('setup time ' + (+new Date - startTime) + 'ms');
 
-// time here
 console.log("# FuzzyPhraseSet lookup");
 startTime = new Date;
 let set = new fuzzy.FuzzyPhraseSet("set.fuzzy");
 console.log(' set retrieval time ' + (+new Date - startTime) + 'ms');
-// time here
 
 startTime = new Date;
 set.contains(docs);
