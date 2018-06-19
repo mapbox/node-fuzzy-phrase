@@ -1,7 +1,6 @@
 const fuzzy = require('../lib');
 const assert = require('assert');
 const tape = require('tape');
-let suite = new require('benchmark').Suite();
 
 // setup
 console.log("# FuzzyPhraseSetBuilder build: ");

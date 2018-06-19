@@ -10,12 +10,19 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.243.1",
-    "tape": "4.6.3",
-    "benchmark": "^2.1.4"
+    "tape": "4.6.3"
   },
   "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build=false || neon build",
     "build": "neon build",
     "test": "tape test/*.js",
     "bench": "./test/run_benchmarks.sh"
+  },
+  "binary": {
+    "module_name": "index",
+    "host": "https://mapbox-node-binary.s3.amazonaws.com",
+    "remote_path": "./{name}/v{version}/{configuration}/",
+    "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
+    "module_path": "./native/"
   }
 }
