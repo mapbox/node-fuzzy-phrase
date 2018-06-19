@@ -7,7 +7,7 @@ let suite = new require('benchmark').Suite();
 console.log("# FuzzyPhraseSetBuilder build: ");
 let startTime = new Date;
 let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
-let docs = require('fs').readFileSync(__dirname + '/fixtures/test-words.txt', 'utf8')
+let docs = require('fs').readFileSync(__dirname + '/fixtures/us-address-words.txt', 'utf8')
         .split('\n');
 setBuilder.insert(docs);
 setBuilder.finish();
