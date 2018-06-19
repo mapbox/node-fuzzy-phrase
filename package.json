@@ -8,7 +8,8 @@
   "dependencies": {
     "@mapbox/cfn-config": "^2.15.0",
     "@mapbox/cloudfriend": "^1.9.1",
-    "neon-cli": "^0.1.22"
+    "neon-cli": "^0.1.22",
+    "node-pre-gyp": "~0.10.0"
   },
   "devDependencies": {
     "aws-sdk": "^2.243.1",

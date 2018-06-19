@@ -2,11 +2,11 @@ language: node_js
 
 sudo: false
 
-# enable c++11/14 builds
-addons:
-  apt:
-    sources: [ 'ubuntu-toolchain-r-test' ]
-    packages: [ 'libstdc++-4.9-dev' ]
+# # enable c++11/14 builds
+# addons:
+#   apt:
+#     sources: [ 'ubuntu-toolchain-r-test' ]
+#     packages: [ 'libstdc++-4.9-dev' ]
 
 install:
   - node -v
@@ -15,7 +15,7 @@ install:
   - sh /tmp/rustup.sh -y
   - export PATH="$HOME/.cargo/bin:$PATH"
   - source "$HOME/.cargo/env"
-  - npm install
+  - npm install neon-cli@^0.1.22
   - neon build "$( if [[ $BUILDTYPE == debug ]]; then echo '--debug'; fi )"
 
 # *Here we run tests*
