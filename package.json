@@ -6,6 +6,8 @@
   "author": "Andrea del Rio <adelrio@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@mapbox/cfn-config": "^2.15.0",
+    "@mapbox/cloudfriend": "^1.9.1",
     "neon-cli": "^0.1.22"
   },
   "devDependencies": {
