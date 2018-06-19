@@ -13,11 +13,25 @@ setBuilder.insert(docs);
 setBuilder.finish();
 console.log('setup time ' + (+new Date - startTime) + 'ms');
 
-
 // time here
 console.log("# FuzzyPhraseSet lookup");
 startTime = new Date;
 let set = new fuzzy.FuzzyPhraseSet("set.fuzzy");
+console.log(' set retrieval time ' + (+new Date - startTime) + 'ms');
 // time here
+
+startTime = new Date;
 set.contains(docs);
-console.log('lookup time ' + (+new Date - startTime) + 'ms');
+console.log(' set contains time ' + (+new Date - startTime) + 'ms');
+
+startTime = new Date;
+set.contains_prefix(docs);
+console.log(' set contains_prefix time ' + (+new Date - startTime) + 'ms');
+
+startTime = new Date;
+set.fuzzy_match(docs, 1, 1);
+console.log(' set fuzzy_match time ' + (+new Date - startTime) + 'ms');
+
+startTime = new Date;
+set.fuzzy_match_prefix(docs, 1, 1);
+console.log(' set fuzzy_match_prefix time ' + (+new Date - startTime) + 'ms');
