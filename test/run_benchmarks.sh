@@ -1,10 +1,28 @@
 set -euo pipefail
+#################################################################################
+# GLOBALS                                                                       #
+#################################################################################
+
+export TMP=/tmp/fuzzy-phrase-bench
 
 failures=0
 success=0
 
 # check if bench data is already there
+if ! [[ -d $TMP ]]; then
+    # should also check credentials
+    echo "need to download the data"
+    echo
+    echo "downloading to tmp"
+    echo
+    ./scripts/download_test_data.sh download phrase us en latn
+    echo
+    echo "test data downloaded"
 
+else
+    echo "test data already downloaded"
+
+fi
 
 # run benchmarks in bench/
 
