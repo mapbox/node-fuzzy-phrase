@@ -31,12 +31,12 @@ let phraseSetArray = [];
 rl.on('line', (line) => {
     phraseArray = []
     line.split(" ").forEach((word) => {
+        // word = word.toString();
         phraseArray.push(word);
     })
     phraseSetArray.push(phraseArray);
 })
 
-rl.close()
 console.log("setup complete");
 
 console.log("benching...");
@@ -82,6 +82,7 @@ while (iterations >= 0) {
         fuzzyMatchPrefixTotalTime += (new Date - startTime);
     }
 }
+rl.close()
 console.log("benching complete");
 console.log(" ");
 
