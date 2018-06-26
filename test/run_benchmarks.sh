@@ -8,6 +8,8 @@ export TMP=/tmp/fuzzy-phrase-bench
 failures=0
 success=0
 
+# need to first check credentials
+
 # check if bench data is already there
 if ! [[ -d $TMP ]]; then
     # should also check credentials
