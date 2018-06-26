@@ -18,6 +18,8 @@ if (!(fs.existsSync('/tmp/fuzzy-phrase-bench/phrase/us_en_latn.txt'))) {
     console.error('     Please run `yarn bench`');
 }
 
+console.log("benching");
+
 while (iterations >= 0) {
     iterations -= 1;
 
@@ -74,7 +76,6 @@ while (iterations >= 0) {
     })
 
     rl.close()
-
     containsPrefixTotalTime += (new Date - startTime);
 
     // FuzzyPhraseSet.fuzzy_match() bench
@@ -91,7 +92,6 @@ while (iterations >= 0) {
     })
 
     rl.close()
-
     fuzzyMatchTotalTime += (new Date - startTime);
 
     // FuzzyPhraseSet.fuzzy_match_prefix() bench
@@ -108,7 +108,6 @@ while (iterations >= 0) {
     })
 
     rl.close()
-
     fuzzyMatchPrefixTotalTime += (new Date - startTime);
 }
 
