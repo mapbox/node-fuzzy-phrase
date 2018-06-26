@@ -13,13 +13,10 @@ success=0
 # check if bench data is already there
 if ! [[ -d $TMP ]]; then
     # should also check credentials
-    echo "need to download the data"
-    echo
-    echo "downloading to tmp"
-    echo
+    echo "Downloading test data to /tmp/ directory... "
     ./scripts/download_test_data.sh download phrase us en latn
     echo
-    echo "test data downloaded"
+    echo "Test data downloaded"
 else
     echo "${TMP} folder present"
     echo "${TMP} data exists - would you like to wipe ${TMP}? (y/n)"
@@ -28,7 +25,7 @@ else
     if [[ $WRITE_IP != "n" ]]; then
         rm -rf $TMP
         ./scripts/download_test_data.sh download phrase us en latn
-        echo "test data downloaded"
+        echo "Test data downloaded"
     fi
 fi
 
