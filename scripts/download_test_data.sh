@@ -111,7 +111,7 @@ function run() {
 # remove tmp dir
 function clean() {
     if [[ -d $TMP ]]; then
-        echo "ok - Are you sure you wish to wipe ${TMP}? (Y/n)"
+        echo "ok - Are you sure you wish to wipe ${TMP}? (y/n)"
         read WRITE_IP
 
         if [[ $WRITE_IP != "n" ]]; then
