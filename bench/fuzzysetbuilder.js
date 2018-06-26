@@ -21,6 +21,7 @@ if (!(fs.existsSync('/tmp/fuzzy-phrase-bench/phrase/us_en_latn.txt'))) {
 while (iterations >= 0) {
     iterations -= 1;
 
+    // # FuzzyPhraseSetBuilder bench
     //  build set
     let startTime = new Date;
     let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
@@ -42,6 +43,7 @@ while (iterations >= 0) {
     setBuildTotalTime += (new Date - startTime);
 
 
+    // FuzzyPhraseSet lookup bench
     // FuzzyPhraseSet.contains() bench
     startTime = new Date;
     let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
