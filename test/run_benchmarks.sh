@@ -22,14 +22,14 @@ if ! [[ -d $TMP ]]; then
     echo "test data downloaded"
 else
     echo "${TMP} folder present"
-    echo "ok - Are you sure you wish to wipe ${TMP}? (y/n)"
+    echo "${TMP} data exists - would you like to wipe ${TMP}? (y/n)"
     read WRITE_IP
 
     if [[ $WRITE_IP != "n" ]]; then
         rm -rf $TMP
+        ./scripts/download_test_data.sh download phrase us en latn
+        echo "test data downloaded"
     fi
-    ./scripts/download_test_data.sh download phrase us en latn
-    echo "test data downloaded"
 fi
 
 # run benchmarks in bench/
