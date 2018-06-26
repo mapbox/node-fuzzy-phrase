@@ -37,6 +37,7 @@ rl.on('line', (line) => {
 })
 
 rl.close()
+console.log("setup complete");
 
 console.log("benching...");
 
@@ -58,7 +59,7 @@ while (iterations >= 0) {
 
     // FuzzyPhraseSet lookup bench
     let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
-    for (var i = 0; i < phraseSetArray.length; i++) {
+    for (let i = 0; i < phraseSetArray.length; i++) {
 
         // FuzzyPhraseSet.contains() bench
         startTime = new Date;
@@ -81,6 +82,8 @@ while (iterations >= 0) {
         fuzzyMatchPrefixTotalTime += (new Date - startTime);
     }
 }
+console.log("benching complete");
+console.log(" ");
 
 console.log("# FuzzyPhraseSetBuilder build: ");
 console.log('     avg FuzzyPhraseSetBuilder setup time: ' + (setBuildTotalTime/1000) + 'ms');
