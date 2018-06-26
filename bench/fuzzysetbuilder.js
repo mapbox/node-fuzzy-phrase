@@ -31,7 +31,8 @@ let phraseSetArray = [];
 rl.on('line', (line) => {
     phraseArray = []
     line.split(" ").forEach((word) => {
-        // word = word.toString();
+        word = word.toString();
+        console.log(word);
         phraseArray.push(word);
     })
     phraseSetArray.push(phraseArray);
