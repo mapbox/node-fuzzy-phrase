@@ -23,7 +23,8 @@ if (!(fs.existsSync('/tmp/fuzzy-phrase-bench/phrase/us_en_latn.txt'))) {
 console.log("setting up... ");
 let docs = fs.createReadStream('/tmp/fuzzy-phrase-bench/phrase/us_en_latn.txt');
 let rl = readline.createInterface({
-    input: docs
+    input: docs,
+    terminal: false
 });
 
 // create some arrays
@@ -32,58 +33,63 @@ rl.on('line', (line) => {
     phraseArray = []
     line.split(" ").forEach((word) => {
         word = word.toString();
-        console.log(word);
+        console.log(`line 36: ${word}`);
         phraseArray.push(word);
     })
     phraseSetArray.push(phraseArray);
+    rl.close();
 })
 
 console.log("setup complete");
 
 console.log("benching...");
 
-while (iterations >= 0) {
-    iterations -= 1;
+rl.on('close', () => {
+    while (iterations >= 0) {
+        iterations -= 1;
 
-    // # FuzzyPhraseSetBuilder bench
-    //  build set
-    let startTime = new Date;
-    let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
+        // # FuzzyPhraseSetBuilder bench
+        //  build set
+        let startTime = new Date;
+        let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
 
-    // iterate over phraseSetArray to check for each phrase.
-    phraseSetArray.forEach((phrase) => {
-        setBuilder.insert(phrase);
-    })
-    setBuilder.finish();
-    setBuildTotalTime += (new Date - startTime);
+        // iterate over phraseSetArray to check for each phrase.
+        phraseSetArray.forEach((phrase) => {
+            setBuilder.insert(phrase);
+        })
+        setBuilder.finish();
+        setBuildTotalTime += (new Date - startTime);
 
+        // rl.close();
 
-    // FuzzyPhraseSet lookup bench
-    let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
-    for (let i = 0; i < phraseSetArray.length; i++) {
+            let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
+            for (let i = 0; i < phraseSetArray.length; i++) {
 
-        // FuzzyPhraseSet.contains() bench
-        startTime = new Date;
-        set.contains(phraseSetArray[i]);
-        containsTotalTime += (new Date - startTime);
+                // FuzzyPhraseSet.contains() bench
+                startTime = new Date;
+                set.contains(phraseSetArray[i]);
+                containsTotalTime += (new Date - startTime);
 
-        // FuzzyPhraseSet.contains_prefix() bench
-        startTime = new Date;
-        set.contains_prefix(phraseSetArray[i]);
-        containsPrefixTotalTime += (new Date - startTime);
+                // FuzzyPhraseSet.contains_prefix() bench
+                startTime = new Date;
+                set.contains_prefix(phraseSetArray[i]);
+                containsPrefixTotalTime += (new Date - startTime);
 
-        // FuzzyPhraseSet.fuzzy_match() bench
-        startTime = new Date;
-        set.fuzzy_match(phraseSetArray[i], 1, 1);
-        fuzzyMatchTotalTime += (new Date - startTime);
+                // FuzzyPhraseSet.fuzzy_match() bench
+                startTime = new Date;
+                set.fuzzy_match(phraseSetArray[i], 1, 1);
+                fuzzyMatchTotalTime += (new Date - startTime);
 
-        // FuzzyPhraseSet.fuzzy_match_prefix() bench
-        startTime = new Date;
-        set.fuzzy_match_prefix(phraseSetArray[i], 1, 1);
-        fuzzyMatchPrefixTotalTime += (new Date - startTime);
+                // FuzzyPhraseSet.fuzzy_match_prefix() bench
+                startTime = new Date;
+                set.fuzzy_match_prefix(phraseSetArray[i], 1, 1);
+                fuzzyMatchPrefixTotalTime += (new Date - startTime);
+            }
+        // FuzzyPhraseSet lookup bench
     }
-}
-rl.close()
+})
+// rl.close()
+
 console.log("benching complete");
 console.log(" ");
 
