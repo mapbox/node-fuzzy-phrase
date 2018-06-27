@@ -21,10 +21,10 @@ if (!(fs.existsSync('/tmp/fuzzy-phrase-bench/phrase/us_en_latn.txt'))) {
 console.log("setting up... ");
 let docs = fs.createReadStream('/tmp/fuzzy-phrase-bench/phrase/us_en_latn.txt');
 let rl = readline.createInterface({
-    input: docs,
-    output: process.stdout,
+    input: docs
 });
 
+let sampleSize = 1000;
 let phraseSetArray = [];
 rl.on('line', (line) => {
     phraseArray = []
@@ -33,9 +33,9 @@ rl.on('line', (line) => {
         phraseArray.push(word);
     })
     phraseSetArray.push(phraseArray);
-    rl.close();
-    console.log("setup complete");
+     (sampleSize > 0) ? sampleSize -=1 : rl.close();
 }).on('close', () => {
+    console.log("setup complete");
     console.log("benching...");
     while (iterations >= 0) {
         iterations -= 1;
@@ -69,8 +69,6 @@ rl.on('line', (line) => {
             fuzzyMatchPrefixTotalTime += (new Date - startTime);
         }
     }
-    rl.close()
-    console.log("benching complete");
     console.log(" ");
 
     console.log("Benchmark results: ");
@@ -78,8 +76,9 @@ rl.on('line', (line) => {
     console.log('     avg FuzzyPhraseSetBuilder setup time: ' + (setBuildTotalTime/1000) + 'ms');
 
     console.log("# FuzzyPhraseSet lookup");
-    console.log('     avg contains() setup time: ' + (containsTotalTime/1000) + 'ms');
+    console.log('     avg contains() lookup time: ' + (containsTotalTime/1000) + 'ms');
     console.log('     avg contains_prefix() lookup time: ' + (containsPrefixTotalTime/1000) + 'ms');
     console.log('     avg fuzzy_match() lookup time: ' + (fuzzyMatchTotalTime/1000) + 'ms');
     console.log('     avg fuzzy_match_prefix() lookup time: ' + (fuzzyMatchPrefixTotalTime/1000) + 'ms');
+    process.exit(0);
 })
