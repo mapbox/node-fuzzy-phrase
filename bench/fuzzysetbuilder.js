@@ -87,6 +87,7 @@ rl.close()
 console.log("benching complete");
 console.log(" ");
 
+console.log("Benchmark results: ");
 console.log("# FuzzyPhraseSetBuilder build: ");
 console.log('     avg FuzzyPhraseSetBuilder setup time: ' + (setBuildTotalTime/1000) + 'ms');
 
