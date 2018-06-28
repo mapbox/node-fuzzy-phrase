@@ -7,7 +7,7 @@ const fs = require('fs');
 const readline = require('readline');
 
 
-let iterations = 1000;
+
 let setBuildTotalTime = 0;
 let containsTotalTime = 0;
 let containsPrefixTotalTime = 0;
@@ -24,47 +24,54 @@ let rl = readline.createInterface({
     input: docs
 });
 
-let sampleSize = 1000;
+// let sampleSize = 0;
 let phraseSetArray = [];
+let startTime = new Date;
+let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
+
 rl.on('line', (line) => {
     phraseArray = []
     line.split(" ").forEach((word) => {
         word = word.toString();
         phraseArray.push(word);
     })
+    setBuilder.insert(phraseArray);
     phraseSetArray.push(phraseArray);
-     (sampleSize > 0) ? sampleSize -=1 : rl.close();
+    // (sampleSize < 100000) ? sampleSize +=1 : rl.close();
 }).on('close', () => {
+    setBuilder.finish();
+    setBuildTotalTime += (new Date - startTime);
+
     console.log("setup complete");
     console.log("benching...");
+    
+    let iterations = 1000;
+    let sampleSize = phraseSetArray.length;
     while (iterations >= 0) {
         iterations -= 1;
 
-        let startTime = new Date;
-        let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
-
-        phraseSetArray.forEach((phrase) => {
-            setBuilder.insert(phrase);
-        })
-        setBuilder.finish();
-        setBuildTotalTime += (new Date - startTime);
 
         let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
+        startTime = new Date;
         for (let i = 0; i < phraseSetArray.length; i++) {
-
-            startTime = new Date;
             set.contains(phraseSetArray[i]);
             containsTotalTime += (new Date - startTime);
+        }
 
-            startTime = new Date;
+        startTime = new Date;
+        for (let i = 0; i < phraseSetArray.length; i++) {
             set.contains_prefix(phraseSetArray[i]);
             containsPrefixTotalTime += (new Date - startTime);
+        }
 
-            startTime = new Date;
+        startTime = new Date;
+        for (let i = 0; i < phraseSetArray.length; i++) {
             set.fuzzy_match(phraseSetArray[i], 1, 1);
             fuzzyMatchTotalTime += (new Date - startTime);
+        }
 
-            startTime = new Date;
+        startTime = new Date;
+        for (let i = 0; i < phraseSetArray.length; i++) {
             set.fuzzy_match_prefix(phraseSetArray[i], 1, 1);
             fuzzyMatchPrefixTotalTime += (new Date - startTime);
         }
@@ -73,12 +80,12 @@ rl.on('line', (line) => {
 
     console.log("Benchmark results: ");
     console.log("# FuzzyPhraseSetBuilder build: ");
-    console.log('     avg FuzzyPhraseSetBuilder setup time: ' + (setBuildTotalTime/1000) + 'ms');
+    console.log('     avg FuzzyPhraseSetBuilder setup time: ' + (setBuildTotalTime/sampleSize) + 'ms');
 
     console.log("# FuzzyPhraseSet lookup");
-    console.log('     avg contains() lookup time: ' + (containsTotalTime/1000) + 'ms');
-    console.log('     avg contains_prefix() lookup time: ' + (containsPrefixTotalTime/1000) + 'ms');
-    console.log('     avg fuzzy_match() lookup time: ' + (fuzzyMatchTotalTime/1000) + 'ms');
-    console.log('     avg fuzzy_match_prefix() lookup time: ' + (fuzzyMatchPrefixTotalTime/1000) + 'ms');
+    console.log('     avg contains() lookup time: ' + (containsTotalTime/sampleSize) + 'ms');
+    console.log('     avg contains_prefix() lookup time: ' + (containsPrefixTotalTime/sampleSize) + 'ms');
+    console.log('     avg fuzzy_match() lookup time: ' + (fuzzyMatchTotalTime/sampleSize) + 'ms');
+    console.log('     avg fuzzy_match_prefix() lookup time: ' + (fuzzyMatchPrefixTotalTime/sampleSize) + 'ms');
     process.exit(0);
 })
