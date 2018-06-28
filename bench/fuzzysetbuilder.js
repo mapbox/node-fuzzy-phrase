@@ -24,27 +24,27 @@ let rl = readline.createInterface({
     input: docs
 });
 
-// let sampleSize = 0;
+let sampleSize = 100000;
 let phraseSetArray = [];
 let startTime = new Date;
 let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
 
 rl.on('line', (line) => {
-    phraseArray = []
-    line.split(" ").forEach((word) => {
-        word = word.toString();
-        phraseArray.push(word);
-    })
-    setBuilder.insert(phraseArray);
-    phraseSetArray.push(phraseArray);
-    // (sampleSize < 100000) ? sampleSize +=1 : rl.close();
+    let words = line.split(' ');
+    // insert every phrase into the builder
+    setBuilder.insert(words);
+    // only insert some of them into the sample array
+    // we'll randomly keep about 1 in 100 until we have enough
+    if (phraseSetArray.length < sampleSize && Math.random() < .01) {
+        phraseSetArray.push(words);
+    }
 }).on('close', () => {
     setBuilder.finish();
     setBuildTotalTime += (new Date - startTime);
 
     console.log("setup complete");
     console.log("benching...");
-    
+
     let iterations = 1000;
     let sampleSize = phraseSetArray.length;
     while (iterations >= 0) {
