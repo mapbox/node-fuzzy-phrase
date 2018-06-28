@@ -30,13 +30,8 @@ let startTime = new Date;
 let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
 
 rl.on('line', (line) => {
-    phraseArray = []
-    line.split(" ").forEach((word) => {
-        word = word.toString();
-        phraseArray.push(word);
-    })
-    setBuilder.insert(phraseArray);
-    phraseSetArray.push(phraseArray);
+    setBuilder.insert(line.split(" "));
+    phraseSetArray.push(line.split(" "));
     // (sampleSize < 100000) ? sampleSize +=1 : rl.close();
 }).on('close', () => {
     setBuilder.finish();
@@ -44,11 +39,11 @@ rl.on('line', (line) => {
 
     console.log("setup complete");
     console.log("benching...");
-    
-    let iterations = 1000;
+
+    // let iterations = 1000;
     let sampleSize = phraseSetArray.length;
-    while (iterations >= 0) {
-        iterations -= 1;
+    // while (iterations >= 0) {
+    //     iterations -= 1;
 
 
         let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
@@ -75,7 +70,7 @@ rl.on('line', (line) => {
             set.fuzzy_match_prefix(phraseSetArray[i], 1, 1);
             fuzzyMatchPrefixTotalTime += (new Date - startTime);
         }
-    }
+    // }
     console.log(" ");
 
     console.log("Benchmark results: ");
