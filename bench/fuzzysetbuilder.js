@@ -30,11 +30,6 @@ let startTime = new Date;
 let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
 
 rl.on('line', (line) => {
-<<<<<<< HEAD
-    setBuilder.insert(line.split(" "));
-    phraseSetArray.push(line.split(" "));
-    // (sampleSize < 100000) ? sampleSize +=1 : rl.close();
-=======
     let words = line.split(' ');
     // insert every phrase into the builder
     setBuilder.insert(words);
@@ -43,7 +38,6 @@ rl.on('line', (line) => {
     if (phraseSetArray.length < sampleSize && Math.random() < .01) {
         phraseSetArray.push(words);
     }
->>>>>>> origin/fuzzy-bench-memory
 }).on('close', () => {
     setBuilder.finish();
     setBuildTotalTime += (new Date - startTime);
@@ -51,11 +45,7 @@ rl.on('line', (line) => {
     console.log("setup complete");
     console.log("benching...");
 
-<<<<<<< HEAD
-    // let iterations = 1000;
-=======
     let iterations = 1000;
->>>>>>> origin/fuzzy-bench-memory
     let sampleSize = phraseSetArray.length;
     // while (iterations >= 0) {
     //     iterations -= 1;
