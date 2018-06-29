@@ -6,8 +6,6 @@ const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
 
-
-
 let setBuildTotalTime = 0;
 let containsTotalTime = 0;
 let containsPrefixTotalTime = 0;
@@ -31,10 +29,7 @@ let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
 
 rl.on('line', (line) => {
     let words = line.split(' ');
-    // insert every phrase into the builder
     setBuilder.insert(words);
-    // only insert some of them into the sample array
-    // we'll randomly keep about 1 in 100 until we have enough
     if (phraseSetArray.length < sampleSize && Math.random() < .01) {
         phraseSetArray.push(words);
     }
@@ -45,37 +40,33 @@ rl.on('line', (line) => {
     console.log("setup complete");
     console.log("benching...");
 
-    let iterations = 1000;
     let sampleSize = phraseSetArray.length;
-    // while (iterations >= 0) {
-    //     iterations -= 1;
 
+    let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
+    startTime = new Date;
+    for (let i = 0; i < phraseSetArray.length; i++) {
+        set.contains(phraseSetArray[i]);
+    }
+    containsTotalTime = (new Date - startTime);
 
-        let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
-        startTime = new Date;
-        for (let i = 0; i < phraseSetArray.length; i++) {
-            set.contains(phraseSetArray[i]);
-            containsTotalTime += (new Date - startTime);
-        }
+    startTime = new Date;
+    for (let i = 0; i < phraseSetArray.length; i++) {
+        set.contains_prefix(phraseSetArray[i]);
+    }
+    containsPrefixTotalTime = (new Date - startTime);
 
-        startTime = new Date;
-        for (let i = 0; i < phraseSetArray.length; i++) {
-            set.contains_prefix(phraseSetArray[i]);
-            containsPrefixTotalTime += (new Date - startTime);
-        }
+    startTime = new Date;
+    for (let i = 0; i < phraseSetArray.length; i++) {
+        set.fuzzy_match(phraseSetArray[i], 1, 1);
+    }
+    fuzzyMatchTotalTime = (new Date - startTime);
 
-        startTime = new Date;
-        for (let i = 0; i < phraseSetArray.length; i++) {
-            set.fuzzy_match(phraseSetArray[i], 1, 1);
-            fuzzyMatchTotalTime += (new Date - startTime);
-        }
+    startTime = new Date;
+    for (let i = 0; i < phraseSetArray.length; i++) {
+        set.fuzzy_match_prefix(phraseSetArray[i], 1, 1);
+    }
+    fuzzyMatchPrefixTotalTime = (new Date - startTime);
 
-        startTime = new Date;
-        for (let i = 0; i < phraseSetArray.length; i++) {
-            set.fuzzy_match_prefix(phraseSetArray[i], 1, 1);
-            fuzzyMatchPrefixTotalTime += (new Date - startTime);
-        }
-    // }
     console.log(" ");
 
     console.log("Benchmark results: ");

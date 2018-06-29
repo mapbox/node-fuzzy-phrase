@@ -24,7 +24,7 @@ else
 
     if [[ $WRITE_IP != "n" ]]; then
         rm -rf $TMP
-        ./scripts/download_test_data.sh download phrase us en latn
+        ./scripts/download_test_data.sh download phrase us en latn sample
         echo "Test data downloaded"
     fi
 fi
