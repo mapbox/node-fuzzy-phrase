@@ -9,8 +9,8 @@ install:
   - sh /tmp/rustup.sh -y
   - export PATH="$HOME/.cargo/bin:$PATH"
   - source "$HOME/.cargo/env"
-  - npm install
-  - neon build
+  - npm install --ignore-scripts
+  - neon clean && neon build
 
 # *Here we run tests*
 # We prefer running tests in the 'before_script' section rather than 'script' to ensure fast failure.
