@@ -15,6 +15,7 @@ install:
   - sh /tmp/rustup.sh -y
   - export PATH="$HOME/.cargo/bin:$PATH"
   - source "$HOME/.cargo/env"
+  - neon build
   - npm install
   # - npm install neon-cli@^0.1.22
   # - neon build "$( if [[ $BUILDTYPE == debug ]]; then echo '--debug'; fi )"
