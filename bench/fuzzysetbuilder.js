@@ -1,10 +1,10 @@
 const fuzzy = require('../lib');
 const assert = require('assert');
 const tape = require('tape');
-const tmp = require('tmp');
 const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
+const tmp = require('tmp');
 
 let setBuildTotalTime = 0;
 let containsTotalTime = 0;
