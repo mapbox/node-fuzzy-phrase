@@ -17,8 +17,6 @@ install:
   - source "$HOME/.cargo/env"
   - neon build
   - npm install
-  # - npm install neon-cli@^0.1.22
-  # - neon build "$( if [[ $BUILDTYPE == debug ]]; then echo '--debug'; fi )"
 
 # *Here we run tests*
 # We prefer running tests in the 'before_script' section rather than 'script' to ensure fast failure.
@@ -37,41 +35,13 @@ script:
 # run your tests and build binaries
 matrix:
   include:
-
-    ## ** Builds that are published **
-
     # linux publishable node v6/release
     - os: linux
       env: BUILDTYPE=release
       node_js: 6
-
-    # linux publishable node v6/debug
-    # - os: linux
-    #   env: BUILDTYPE=debug
-    #   node_js: 6
 
     # osx publishable node v6/release
     - os: osx
       osx_image: xcode9.2
       env: BUILDTYPE=release
       node_js: 6
-
-    # osx publishable node v6/debug
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: BUILDTYPE=debug
-    #   node_js: 6
-
-    ## ** Builds that do not get published **
-
-    # Coverage build
-    # - os: linux
-    #   env: BUILDTYPE=debug CXXFLAGS="--coverage" LDFLAGS="--coverage"
-    #   node_js: 6
-    #   # Overrides `script` to publish coverage data to codecov
-    #   script:
-    #     - export PATH=$(pwd)/mason_packages/.link/bin/:${PATH}
-    #     - which llvm-cov
-    #     - curl -S -f https://codecov.io/bash -o codecov
-    #     - chmod +x codecov
-    #     - ./codecov -x "llvm-cov gcov" -Z
