@@ -6,3 +6,7 @@ native/artifacts.json
 **/.DS_Store
 *.txt
 *.fuzzy
+*.fst
+*.msg
+*.json
+bench.fuzzy/
