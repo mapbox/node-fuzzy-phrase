@@ -25,7 +25,7 @@ let rl = readline.createInterface({
 let sampleSize = 100000;
 let phraseSetArray = [];
 let startTime = new Date;
-let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
+let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("/tmp/bench.fuzzy")
 
 rl.on('line', (line) => {
     let words = line.split(' ');
@@ -42,7 +42,7 @@ rl.on('line', (line) => {
 
     let sampleSize = phraseSetArray.length;
 
-    let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
+    let set = new fuzzy.FuzzyPhraseSet("/tmp/bench.fuzzy");
     startTime = new Date;
     for (let i = 0; i < phraseSetArray.length; i++) {
         set.contains(phraseSetArray[i]);
