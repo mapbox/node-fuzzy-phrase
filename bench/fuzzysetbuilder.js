@@ -7,7 +7,7 @@ const readline = require('readline');
 const tmp = require('tmp');
 const rimraf = require('rimraf').sync;
 
-let tmpDir = tmp.dirSync()
+const tmpDir = tmp.dirSync()
 
 let setBuildTotalTime = 0;
 let containsTotalTime = 0;
