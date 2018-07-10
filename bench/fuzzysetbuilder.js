@@ -5,6 +5,9 @@ const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
 const tmp = require('tmp');
+const rimraf = require('rimraf').sync;
+
+const tmpDir = tmp.dirSync()
 
 let setBuildTotalTime = 0;
 let containsTotalTime = 0;
@@ -25,7 +28,7 @@ let rl = readline.createInterface({
 let sampleSize = 100000;
 let phraseSetArray = [];
 let startTime = new Date;
-let setBuilder = new fuzzy.FuzzyPhraseSetBuilder("bench.fuzzy")
+let setBuilder = new fuzzy.FuzzyPhraseSetBuilder(tmpDir.name)
 
 rl.on('line', (line) => {
     let words = line.split(' ');
@@ -42,7 +45,7 @@ rl.on('line', (line) => {
 
     let sampleSize = phraseSetArray.length;
 
-    let set = new fuzzy.FuzzyPhraseSet("bench.fuzzy");
+    let set = new fuzzy.FuzzyPhraseSet(tmpDir.name);
     startTime = new Date;
     for (let i = 0; i < phraseSetArray.length; i++) {
         set.contains(phraseSetArray[i]);
@@ -78,5 +81,8 @@ rl.on('line', (line) => {
     console.log('     avg contains_prefix() lookup time: ' + (containsPrefixTotalTime/sampleSize) + 'ms');
     console.log('     avg fuzzy_match() lookup time: ' + (fuzzyMatchTotalTime/sampleSize) + 'ms');
     console.log('     avg fuzzy_match_prefix() lookup time: ' + (fuzzyMatchPrefixTotalTime/sampleSize) + 'ms');
+
+    rimraf(tmpDir.name);
+
     process.exit(0);
 })
