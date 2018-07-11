@@ -2,7 +2,6 @@
 
 Node.js wrapper using [Neon](https://www.neon-bindings.com/) for the [fuzzy-phrase](https://github.com/mapbox/fuzzy-phrase/pulls) Rust module.
 
-<br>
 
 ### Install
 
@@ -14,7 +13,6 @@ By default, binaries are provided for 64 bit OS X >= 10.8 and 64 bit Linux (>= U
 
 Other platforms will fall back to a source compile: see [Source Build](#Source Build) for details
 
-<br>
 
 ### Source build
 
@@ -22,7 +20,6 @@ Other platforms will fall back to a source compile: see [Source Build](#Source B
 
 - To do a full rebuild run: `neon clean`
 
-<br>
 
 ### Publishing
 
