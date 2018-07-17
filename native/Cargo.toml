@@ -14,4 +14,7 @@ neon-build = "0.1.22"
 
 [dependencies]
 neon = "0.1.22"
-fuzzy-phrase = { git = "https://github.com/mapbox/fuzzy-phrase", rev = "e210d91cd9aa3b0de7d7b55b73aee2cb368a8ff5" }
+serde = "1.x"
+serde_derive = "1.x"
+neon-serde = "0.0.3"
+fuzzy-phrase = { git = "https://github.com/mapbox/fuzzy-phrase", rev = "39a98d22e4e5ac10c200c7e1da9a7bc397ef00aa" }
