@@ -1,6 +1,6 @@
 {
   "name": "node-fuzzy-phrase",
-  "version": "0.1.0-ww-1",
+  "version": "0.1.0-dev4",
   "description": "neon module for wrapping fuzzy-phrase",
   "main": "lib/index.js",
   "author": "Andrea del Rio <adelrio@gmail.com>",
