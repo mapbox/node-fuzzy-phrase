@@ -8,5 +8,5 @@ native/artifacts.json
 *.fuzzy
 *.fst
 *.msg
-*.json
+artifacts.json
 bench.fuzzy/
