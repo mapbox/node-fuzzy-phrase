@@ -10,10 +10,10 @@ name = "node_fuzzy_phrase"
 crate-type = ["dylib"]
 
 [build-dependencies]
-neon-build = "0.1.22"
+neon-build = "0.1.23"
 
 [dependencies]
-neon = "0.1.22"
+neon = "0.1.23"
 serde = "1.x"
 serde_derive = "1.x"
 neon-serde = "0.0.3"

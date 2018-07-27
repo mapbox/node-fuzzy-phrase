@@ -1,6 +1,6 @@
 {
   "name": "node-fuzzy-phrase",
-  "version": "0.1.0-dev5",
+  "version": "0.1.0-n10",
   "description": "neon module for wrapping fuzzy-phrase",
   "main": "lib/index.js",
   "author": "Andrea del Rio <adelrio@gmail.com>",
@@ -8,7 +8,7 @@
   "dependencies": {
     "@mapbox/cfn-config": "^2.15.0",
     "@mapbox/cloudfriend": "^1.9.1",
-    "neon-cli": "^0.1.22",
+    "neon-cli": "^0.1.23",
     "node-pre-gyp": "~0.10.0"
   },
   "devDependencies": {
