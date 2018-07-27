@@ -1,5 +1,5 @@
 {
-  "name": "node-fuzzy-phrase",
+  "name": "@mapbox/node-fuzzy-phrase",
   "version": "0.1.0-dev5",
   "description": "neon module for wrapping fuzzy-phrase",
   "main": "lib/index.js",
