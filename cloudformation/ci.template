@@ -19,7 +19,7 @@
                                     "Condition": {
                                         "StringLike": {
                                             "s3:prefix": [
-                                                "node-fuzzy-phrase/*"
+                                                "@mapbox/node-fuzzy-phrase/*"
                                             ]
                                         }
                                     }
