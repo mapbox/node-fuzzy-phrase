@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "user for publishing to s3://mapbox-node-binary/node-fuzzy-phrase",
+    "Description": "user for publishing to s3://mapbox-node-binary/@mapbox/node-fuzzy-phrase",
     "Resources": {
         "User": {
             "Type": "AWS::IAM::User",
@@ -40,7 +40,7 @@
                                         "s3:PutObjectAcl"
                                     ],
                                     "Effect": "Allow",
-                                    "Resource": "arn:aws:s3:::mapbox-node-binary/node-fuzzy-phrase/*"
+                                    "Resource": "arn:aws:s3:::mapbox-node-binary/@mapbox/node-fuzzy-phrase/*"
                                 }
                             ]
                         }
