@@ -10,11 +10,11 @@ name = "node_fuzzy_phrase"
 crate-type = ["dylib"]
 
 [build-dependencies]
-neon-build = "0.1.22"
+neon-build = "0.1.23"
 
 [dependencies]
-neon = "0.1.22"
+neon = "0.1.23"
 serde = "1.x"
 serde_derive = "1.x"
 neon-serde = "0.0.3"
-fuzzy-phrase = { git = "https://github.com/mapbox/fuzzy-phrase", rev = "279900c73750ff1f3620f82ffb3e8588b1d16f79" }
+fuzzy-phrase = { git = "https://github.com/mapbox/fuzzy-phrase", rev = "ff44810c167951713d4c6c87264a28e94a533965" }
