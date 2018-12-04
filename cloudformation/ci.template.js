@@ -1,9 +1,11 @@
-var cf = require('@mapbox/cloudfriend');
-var package_json = require('../package.json')
+const cf = require('@mapbox/cloudfriend');
+const packageJson = require('../package.json');
 
 module.exports = {
   AWSTemplateFormatVersion: '2010-09-09',
-  Description: 'user for publishing to s3://mapbox-node-binary/' + package_json.name,
+  Description: `user for publishing to s3://mapbox-node-binary/${
+    packageJson.name
+  }`,
   Resources: {
     User: {
       Type: 'AWS::IAM::User',
@@ -17,9 +19,9 @@ module.exports = {
                   Action: ['s3:ListBucket'],
                   Effect: 'Allow',
                   Resource: 'arn:aws:s3:::mapbox-node-binary',
-                  Condition : {
-                    StringLike : {
-                      "s3:prefix": [ package_json.name + "/*"]
+                  Condition: {
+                    StringLike: {
+                      's3:prefix': [`${packageJson.name}/*`]
                     }
                   }
                 }
@@ -31,9 +33,17 @@ module.exports = {
             PolicyDocument: {
               Statement: [
                 {
-                  Action: ['s3:DeleteObject', 's3:GetObject', 's3:GetObjectAcl', 's3:PutObject', 's3:PutObjectAcl'],
+                  Action: [
+                    's3:DeleteObject',
+                    's3:GetObject',
+                    's3:GetObjectAcl',
+                    's3:PutObject',
+                    's3:PutObjectAcl'
+                  ],
                   Effect: 'Allow',
-                  Resource: 'arn:aws:s3:::mapbox-node-binary/' + package_json.name + '/*'
+                  Resource: `arn:aws:s3:::mapbox-node-binary/${
+                    packageJson.name
+                  }/*`
                 }
               ]
             }
