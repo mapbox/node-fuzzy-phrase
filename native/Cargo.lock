@@ -82,7 +82,7 @@ dependencies = [
 [[package]]
 name = "fuzzy-phrase"
 version = "0.1.0"
-source = "git+https://github.com/mapbox/fuzzy-phrase?rev=0b03cbf1aede9d0a43aa28dffa828e2c62f1484e#0b03cbf1aede9d0a43aa28dffa828e2c62f1484e"
+source = "git+https://github.com/mapbox/fuzzy-phrase?rev=218d3aac6dc1559a2d42581921455a6d29b37542#218d3aac6dc1559a2d42581921455a6d29b37542"
 dependencies = [
  "byteorder 1.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "fst 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -91,6 +91,7 @@ dependencies = [
  "memmap 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rmp-serde 0.13.7 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-hash 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.64 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.64 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.19 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -182,7 +183,7 @@ dependencies = [
 name = "node-fuzzy-phrase"
 version = "0.1.0"
 dependencies = [
- "fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=0b03cbf1aede9d0a43aa28dffa828e2c62f1484e)",
+ "fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=218d3aac6dc1559a2d42581921455a6d29b37542)",
  "neon 0.1.23 (registry+https://github.com/rust-lang/crates.io-index)",
  "neon-build 0.1.23 (registry+https://github.com/rust-lang/crates.io-index)",
  "neon-serde 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -282,6 +283,14 @@ dependencies = [
 name = "rustc-demangle"
 version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "rustc-hash"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "byteorder 1.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "semver"
@@ -400,7 +409,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum either 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "3be565ca5c557d7f59e7cfcf1844f9e3033650c929c6566f511e8005f205c1d0"
 "checksum error-chain 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ff511d5dc435d703f4971bc399647c9bc38e20cb41452e3b9feb4765419ed3f3"
 "checksum fst 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d94485a00b1827b861dd9d1a2cc9764f9044d4c535514c0760a5a2012ef3399f"
-"checksum fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=0b03cbf1aede9d0a43aa28dffa828e2c62f1484e)" = "<none>"
+"checksum fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=218d3aac6dc1559a2d42581921455a6d29b37542)" = "<none>"
 "checksum gcc 0.3.54 (registry+https://github.com/rust-lang/crates.io-index)" = "5e33ec290da0d127825013597dbdfc28bee4964690c7ce1166cbc2a7bd08b1bb"
 "checksum itertools 0.7.8 (registry+https://github.com/rust-lang/crates.io-index)" = "f58856976b776fedd95533137617a02fb25719f40e7d9b01c7043cd65474f450"
 "checksum itoa 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = "c069bbec61e1ca5a596166e55dfe4773ff745c3d16b700013bcaff9a6df2c682"
@@ -423,6 +432,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum rmp 0.8.7 (registry+https://github.com/rust-lang/crates.io-index)" = "a3d45d7afc9b132b34a2479648863aa95c5c88e98b32285326a6ebadc80ec5c9"
 "checksum rmp-serde 0.13.7 (registry+https://github.com/rust-lang/crates.io-index)" = "011e1d58446e9fa3af7cdc1fb91295b10621d3ac4cb3a85cc86385ee9ca50cd3"
 "checksum rustc-demangle 0.1.8 (registry+https://github.com/rust-lang/crates.io-index)" = "76d7ba1feafada44f2d38eed812bd2489a03c0f5abb975799251518b68848649"
+"checksum rustc-hash 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "7540fc8b0c49f096ee9c961cda096467dce8084bec6bdca2fc83895fd9b28cb8"
 "checksum semver 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1d7eb9ef2c18661902cc47e535f9bc51b78acd254da71d375c2f6720d9a40403"
 "checksum semver-parser 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "388a1df253eca08550bef6c72392cfe7c30914bf41df5269b68cbd6ff8f570a3"
 "checksum serde 1.0.64 (registry+https://github.com/rust-lang/crates.io-index)" = "fba5be06346c5200249c8c8ca4ccba4a09e8747c71c16e420bd359a0db4d8f91"
