@@ -1,6 +1,6 @@
 ## Node Fuzzy Phrase
 
-Node.js wrapper using [Neon](https://www.neon-bindings.com/) for the [fuzzy-phrase](https://github.com/mapbox/fuzzy-phrase/pulls) Rust module.
+Node.js wrapper using [Neon](https://www.neon-bindings.com/) for the [fuzzy-phrase](https://github.com/mapbox/fuzzy-phrase) Rust module.
 
 
 ### Install
