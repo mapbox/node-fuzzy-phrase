@@ -11,7 +11,7 @@ To install `node-fuzzy-phrase` run:
 
 By default, binaries are provided for 64 bit OS X >= 10.8 and 64 bit Linux (>= Ubuntu Trusty). On those platforms no external dependencies are needed.
 
-Other platforms will fall back to a source compile: see [Source Build](#Source Build) for details
+Other platforms will fall back to a source compile: see [Source Build](#source-build) for details
 
 
 ### Source build
