@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/node-fuzzy-phrase",
-  "version": "0.2.0",
+  "version": "0.2.0-phrase-id",
   "description": "neon module for wrapping fuzzy-phrase",
   "main": "lib/index.js",
   "author": "Andrea del Rio <adelrio@gmail.com>",
