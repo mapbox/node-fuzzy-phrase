@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/node-fuzzy-phrase",
-  "version": "0.2.0",
+  "version": "0.2.0-mod-only",
   "description": "neon module for wrapping fuzzy-phrase",
   "main": "lib/index.js",
   "author": "Andrea del Rio <adelrio@gmail.com>",
@@ -9,7 +9,7 @@
     "@mapbox/cfn-config": "^2.15.0",
     "@mapbox/cloudfriend": "^1.9.1",
     "neon-cli": "^0.1.23",
-    "node-pre-gyp": "~0.10.0"
+    "node-pre-gyp": "0.12.0"
   },
   "devDependencies": {
     "@mapbox/eslint-config-geocoding": "^2.0.0",
@@ -24,8 +24,8 @@
     "tmp": "0.0.33"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build=false || neon build",
-    "build": "neon build",
+    "install": "node-pre-gyp install --fallback-to-build=false || ( neon build && mkdir -p ./lib/module/ && cp ./native/index.node ./lib/module/index.node )",
+    "build": "neon build && mkdir -p ./lib/module/ && cp ./native/index.node ./lib/module/index.node",
     "lint": "eslint .",
     "test": "tape test/*.js",
     "bench": "./test/run_benchmarks.sh"
@@ -35,7 +35,7 @@
     "host": "https://mapbox-node-binary.s3.amazonaws.com",
     "remote_path": "./{name}/v{version}/{configuration}/",
     "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
-    "module_path": "./native/"
+    "module_path": "./lib/module/"
   },
   "eslintConfig": {
     "extends": "@mapbox/eslint-config-geocoding"
