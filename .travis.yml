@@ -10,7 +10,7 @@ install:
   - export PATH="$HOME/.cargo/bin:$PATH"
   - source "$HOME/.cargo/env"
   - npm install --ignore-scripts
-  - neon clean && neon build
+  - neon clean && npm build
 
 before_script:
   - npm test
