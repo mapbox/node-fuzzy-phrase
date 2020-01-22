@@ -17,4 +17,4 @@ neon = "0.1.23"
 serde = "1.x"
 serde_derive = "1.x"
 neon-serde = "0.0.3"
-fuzzy-phrase = { git = "https://github.com/mapbox/fuzzy-phrase", rev = "daf61f773c3ecb98b77cf8f4e3d0983fa4159f83" }
+fuzzy-phrase = { git = "https://github.com/mapbox/fuzzy-phrase", rev = "388e417d09f4b40f052dcf59a4a98b767c41799c" }

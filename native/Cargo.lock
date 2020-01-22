@@ -84,7 +84,7 @@ dependencies = [
 [[package]]
 name = "fuzzy-phrase"
 version = "0.1.0"
-source = "git+https://github.com/mapbox/fuzzy-phrase?rev=daf61f773c3ecb98b77cf8f4e3d0983fa4159f83#daf61f773c3ecb98b77cf8f4e3d0983fa4159f83"
+source = "git+https://github.com/mapbox/fuzzy-phrase?rev=388e417d09f4b40f052dcf59a4a98b767c41799c#388e417d09f4b40f052dcf59a4a98b767c41799c"
 dependencies = [
  "byteorder 1.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "fst 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -185,7 +185,7 @@ dependencies = [
 name = "node-fuzzy-phrase"
 version = "0.1.0"
 dependencies = [
- "fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=daf61f773c3ecb98b77cf8f4e3d0983fa4159f83)",
+ "fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=388e417d09f4b40f052dcf59a4a98b767c41799c)",
  "neon 0.1.23 (registry+https://github.com/rust-lang/crates.io-index)",
  "neon-build 0.1.23 (registry+https://github.com/rust-lang/crates.io-index)",
  "neon-serde 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -411,7 +411,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum either 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "3be565ca5c557d7f59e7cfcf1844f9e3033650c929c6566f511e8005f205c1d0"
 "checksum error-chain 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ff511d5dc435d703f4971bc399647c9bc38e20cb41452e3b9feb4765419ed3f3"
 "checksum fst 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)" = "db72126ca7dff566cdbbdd54af44668c544897d9d3862b198141f176f1238bdf"
-"checksum fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=daf61f773c3ecb98b77cf8f4e3d0983fa4159f83)" = "<none>"
+"checksum fuzzy-phrase 0.1.0 (git+https://github.com/mapbox/fuzzy-phrase?rev=388e417d09f4b40f052dcf59a4a98b767c41799c)" = "<none>"
 "checksum gcc 0.3.54 (registry+https://github.com/rust-lang/crates.io-index)" = "5e33ec290da0d127825013597dbdfc28bee4964690c7ce1166cbc2a7bd08b1bb"
 "checksum itertools 0.7.8 (registry+https://github.com/rust-lang/crates.io-index)" = "f58856976b776fedd95533137617a02fb25719f40e7d9b01c7043cd65474f450"
 "checksum itoa 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = "c069bbec61e1ca5a596166e55dfe4773ff745c3d16b700013bcaff9a6df2c682"
